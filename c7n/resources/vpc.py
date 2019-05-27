@@ -1000,7 +1000,7 @@ class SGPermission(Filter):
                 fv['key'] = f
             else:
                 fv = {f: fv}
-            vf = ValueFilter(fv)
+            vf = ValueFilter(fv, self.manager)
             vf.annotate = False
             self.vfilters.append(vf)
         return super(SGPermission, self).process(resources, event)
@@ -1032,7 +1032,11 @@ class SGPermission(Filter):
         match_range = self.data[cidr_key]
         match_range['key'] = cidr_type
 
+<<<<<<< HEAD
+        vf = ValueFilter(match_range, self.manager)
+=======
         vf = ValueFilter(match_range)
+>>>>>>> 898ebe5984b694e16fad051300d4f664db9fda6d
         vf.annotate = False
 
         for ip_range in ip_perms:
@@ -1062,7 +1066,11 @@ class SGPermission(Filter):
         d = dict(self.data['Description'])
         d['key'] = 'Description'
 
+<<<<<<< HEAD
+        vf = ValueFilter(d, self.manager)
+=======
         vf = ValueFilter(d)
+>>>>>>> 898ebe5984b694e16fad051300d4f664db9fda6d
         vf.annotate = False
 
         for k in ('Ipv6Ranges', 'IpRanges', 'UserIdGroupPairs', 'PrefixListIds'):
